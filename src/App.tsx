@@ -8,7 +8,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          <Button disabled btnType={ButtonType.Danger} size={ButtonSize.Large}>click</Button>
+          <Button disabled btnType={ButtonType.Primary} size={ButtonSize.Large}>click</Button>
+          <br/>
           <Button btnType={ButtonType.Link} href="www.baidu.com">百度一下</Button>
         </p>
         {/* <p>
