@@ -286,3 +286,16 @@ $progress-bg:                       $gray-200 !default;
 $progress-border-radius:            $border-radius !default;
 $progress-bar-color:                $white !default;
 $progress-bar-transition:           width .6s ease !default;
+
+// alert
+$alert-bg-color-success: #F0F9EB;
+$alert-font-color-success: #67C23A;
+
+$alert-bg-color-danger: #FEF0F0;
+$alert-font-color-danger: #F56C6C;
+
+$alert-bg-color-warning: #FDF6EC;
+$alert-font-color-warning: #E6A23C;
+
+$alert-bg-color-default: #F4F4F5 !default;
+$alert-font-color-default: #909399 !default;

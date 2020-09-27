@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import React, {ButtonHTMLAttributes, FC, HtmlHTMLAttributes} from 'react'
 import classNames from 'classnames'
 // 定义button的大小、类型
 // 枚举 button 大小
@@ -21,26 +21,32 @@ interface IBaseButton {
     size?: ButtonSize,
     children: React.ReactNode
 }
-export const Button:FC<IBaseButton> = (props) =>{
+type NativeButtonProps = IBaseButton & React.ButtonHTMLAttributes<HTMLElement>
+type NativeAnchorButtonProps = IBaseButton & React.AnchorHTMLAttributes<HTMLElement>
+// Partial 后属性变为可选参数
+export type ButttonProps = Partial<NativeButtonProps & NativeAnchorButtonProps>
+export const Button:FC<ButttonProps> = (props) =>{
     const {
         disable,
         size,
         href,
         btnType,
-        children
+        children,
+        className,
+        ...restProps
     } = props
-    const classed = classNames('btn', {
+    const classed = classNames('btn',className, {
         [`btn-${btnType}`] : btnType,
         [`btn-${size}`] : size,
         disable: (ButtonType.Link && href) && disable
     })
     if(ButtonType.Link && href){
         return (
-            <a href={href} className={classed}>{children}</a>
+            <a href={href} {...restProps} className={classed}>{children}</a>
         )
     } else {
         return (
-            <button className={classed} disabled={disable}>{children}</button>
+            <button className={classed} {...restProps} disabled={disable}>{children}</button>
         )
     }
 }

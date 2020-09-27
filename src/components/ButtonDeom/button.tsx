@@ -1,5 +1,6 @@
 import React, {FC} from 'react'
 import classnames from 'classnames'
+import { type } from 'os'
 export enum ButtonSize {
    Large = 'lg',
    Small = 'sm'
@@ -21,29 +22,35 @@ interface BaseButtonProps {
     children: React.ReactNode,
     href?: string
 }
-export const Button: FC<BaseButtonProps> = (props)=>{
+type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement>
+type NativeAnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>
+// Partial 后属性变为可选
+export type ButtonProps = Partial<NativeButtonProps & NativeAnchorButtonProps>
+export const Button: FC<ButtonProps> = (props)=>{
     const {
         btnType,
         disabled,
         size,
         children,
-        href
+        href,
+        className,
+        ...restProps
     } = props
     console.log('props', btnType)
-    const classes = classnames('btn', {
+    const classes = classnames('btn',className, {
         [`btn-${btnType}`]: btnType,
         [`btn-${size}`]: size,
         'disabled': (btnType === ButtonType.Link) && disabled
     })
     if(btnType === ButtonType.Link && href){
         return(
-            <a  className={classes} href={href}>
+            <a  className={classes} {...restProps} href={href}>
                 {children}
             </a>
         )
     } else {
         return (
-            <button className={classes} disabled={disabled}>
+            <button className={classes} {...restProps} disabled={disabled}>
                  {children}
             </button>
         )

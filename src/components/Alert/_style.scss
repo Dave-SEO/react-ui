@@ -1,0 +1,38 @@
+.alert{
+    font-size: 12px;
+    width: 100%;
+    padding: 8px 16px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.alert-success {
+    @include Alert-style($alert-bg-color-success, $alert-font-color-success);
+}
+.alert-danger {
+    @include Alert-style($alert-bg-color-danger, $alert-font-color-danger);
+}
+.alert-warning{
+    @include Alert-style($alert-bg-color-warning, $alert-font-color-warning);
+}
+.alert-default{
+    @include Alert-style($alert-bg-color-default, $alert-font-color-default);
+}
+.alert-close{
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+    top: 2px;
+    color: #C0CDD9;
+    cursor: pointer;
+}
+.alert-desc{
+    margin: 0;
+    padding: 0;
+}
+.alert-title{
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}

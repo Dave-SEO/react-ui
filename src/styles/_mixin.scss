@@ -5,14 +5,39 @@
 }
 
 @mixin button-style(
-    $background,
-    $border, 
-    $color,
-    $hover-border: lighten($background, 7.5%),
-    $hover-color: lighten($border, 10%),
-    $hover-color: $color,
+  $background,
+  $border,
+  $color,
+  $hover-background: lighten($background, 7.5%),
+  $hover-border: lighten($border, 10%),
+  $hover-color: $color,
 ) {
+  color: $color;
+  background: $background;
+  border-color: $border;
+  &:hover {
+    color: $hover-color;
+    background: $hover-background;
+    border-color: $hover-border;    
+  }
+  &:focus,
+  &.focus {
+    color: $hover-color;
+    background: $hover-background;
+    border-color: $hover-border;
+    outline: 0;  
+  }
+  &:disabled,
+  &.disabled {
     color: $color;
     background: $background;
-    border-color: $border;
+    border-color: $border;    
+  }
+}
+@mixin Alert-style(
+  $background,
+  $color
+) {
+  background-color: $background;
+  color: $color;
 }
