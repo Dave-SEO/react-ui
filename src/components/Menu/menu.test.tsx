@@ -1,7 +1,7 @@
 import React from 'react'
 import {Menu, MenuItem} from './index'
 import {MenuProps} from './Menu'
-import { render, RenderResult } from '@testing-library/react';
+import { render, RenderResult, fireEvent, cleanup } from '@testing-library/react';
 const testProps:MenuProps = {
     defaultIndex: '0',
     onSelect:jest.fn(),
@@ -14,7 +14,7 @@ const testVerProps:MenuProps = {
 const generateMenu = (props: MenuProps) =>{
     return (
        <Menu {...props}>
-          <MenuItem>
+          <MenuItem index='0'>
             active
           </MenuItem> 
           <MenuItem disabled>
@@ -38,5 +38,19 @@ describe('test menu', ()=>{
     it('menu props default', ()=>{
         expect(menuElement).toBeInTheDocument()
         expect(menuElement).toHaveClass('meunWrap')
+        expect(activeElement).toHaveClass('menu-item is-active')
+        expect(disabledElement).toHaveClass('menu-item is-disabled')
+    })
+    it('click items and change active and callback', ()=>{
+      const Item = wrapper.getByText('xyz')
+      expect(Item).toBeInTheDocument()
+      fireEvent.click(disabledElement)
+      expect(disabledElement).not.toHaveClass('is-active')
+    })
+    it('test menu vertical', ()=>{
+      cleanup()
+      const vWrap = render(generateMenu(testVerProps))
+      const vMenu = vWrap.getByTestId('test-menu')
+      expect(vMenu).toHaveClass('menu-vertical')
     })
 })
