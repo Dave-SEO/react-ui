@@ -1,2 +1,2 @@
-import {Button, ButtonType, ButtonSize} from './button'
-export {Button, ButtonType, ButtonSize}
+import {Button} from './button'
+export {Button}
