@@ -27,15 +27,14 @@ export const Alert: FC<IBaseAlert> = (props) =>{
         center,
         closable
     } = props
-    const [data, setShow] = useState({isShow: false})
-    console.log(data.isShow)
+    const [visible, setVisible] = useState(false)
     const classNamed = classnames('alert', {
         [`alert-${type}`] : type,
-        'is-dailog': data.isShow
+        'is-dailog': visible
     })
     function close(closable: any){
         console.log(closable)
-        setShow({isShow: true})
+        setVisible(true)
     }
     return (
         <div className={classNamed} >
