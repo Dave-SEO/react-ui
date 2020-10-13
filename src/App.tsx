@@ -17,7 +17,7 @@ function App() {
         <Alert type={AlertType.danger} title="danger" closable={true}/>
         <Alert type={AlertType.warning} title="warning"/>
         <Alert type={AlertType.default} title="default"/>
-        <Menu defaultIndex='0'>
+        <Menu defaultIndex='0' mode='horizonal'>
           <MenuItem >li</MenuItem>
           <MenuItem index='0'>li</MenuItem>
         </Menu>
