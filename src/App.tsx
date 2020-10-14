@@ -19,7 +19,7 @@ function App() {
         <Alert type={AlertType.default} title="default"/>
         <Menu defaultIndex='0' mode='horizonal'>
           <MenuItem >li</MenuItem>
-          <MenuItem index='0'>li</MenuItem>
+          <MenuItem >li</MenuItem>
         </Menu>
         {/* <p>
           <Button btnType={ButtonType.Primary} size={ButtonSize.large} disable>submit</Button>
