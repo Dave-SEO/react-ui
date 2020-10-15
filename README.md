@@ -233,7 +233,7 @@ export const ThemContext = createContext(ThemStyle.light)
 ###### Hook规则
 1. 只在最顶层使用hook
 2. 只在React 函数中调用hook
-
+##### Partial 后属性变为可选参数
 ###### react (测试))testing-library
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
