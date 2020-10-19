@@ -25,6 +25,7 @@
     }
     .submenu-item {
       position: relative;
+      padding: $menu-item-padding-y $menu-item-padding-x;
       .submenu-title {
         display: flex;
         align-items: center;
@@ -49,7 +50,7 @@
         transform: rotate(180deg) !important;
       }
     }
-    .viking-submenu {
+    .submenu {
       //display: none;
       list-style:none;
       padding-left: 0;
@@ -65,15 +66,16 @@
         }
       }
     }
-    .viking-submenu.menu-opened {
-      //display: block;
+    .submenu.menu-opened {
+      display: block;
     }
   }
   .menu-horizontal {
     >.menu-item {
       border-bottom: $menu-item-active-border-width solid transparent;
     }
-    .viking-submenu {
+    .submenu {
+      display: none;
       position: absolute;
       background: $white;
       z-index: 100;
@@ -88,6 +90,9 @@
     border-bottom: 0px;
     margin: 10px 20px;
     border-right: $menu-border-width solid $menu-border-color;
+    .submenu{
+      display: none;
+    }
     >.menu-item {
       border-left: $menu-item-active-border-width solid transparent;
       &.is-active, &:hover {

@@ -3,7 +3,7 @@ import  {Button} from './components/ButtonDeom'
 // import {Button, ButtonSize, ButtonType} from './components/button'
 import {Alert, AlertType} from './components/Alert'
 import './styles/index.scss';
-import {Menu, MenuItem} from './components/Menu'
+import {Menu, MenuItem, SubMenu} from './components/Menu'
 function App() {
   return (
     <div className="App">
@@ -17,9 +17,13 @@ function App() {
         <Alert type={AlertType.danger} title="danger" closable={true}/>
         <Alert type={AlertType.warning} title="warning"/>
         <Alert type={AlertType.default} title="default"/>
-        <Menu defaultIndex='0' mode='horizonal'>
+        <Menu defaultIndex='0' mode='vertical' defaultOpenSubMenus={['2']}>
           <MenuItem >li</MenuItem>
           <MenuItem >li</MenuItem>
+          <SubMenu title='子菜单'>
+            <MenuItem>subMenu1</MenuItem>
+            <MenuItem>subMenu2</MenuItem>
+          </SubMenu>
         </Menu>
         {/* <p>
           <Button btnType={ButtonType.Primary} size={ButtonSize.large} disable>submit</Button>

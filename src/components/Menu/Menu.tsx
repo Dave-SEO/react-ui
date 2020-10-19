@@ -7,16 +7,18 @@ export interface MenuProps {
     className?: string,
     mode?: MenuMode,
     style?: React.CSSProperties,
-    onSelect?: (selectedIndex: string)=> void
+    onSelect?: (selectedIndex: string)=> void,
+    defaultOpenSubMenus?: string[]
 }
 interface IMenuContext {
     index: string,
     onSelect?:(selectIndex: string)=> void,
-    mode?:MenuMode
+    mode?:MenuMode, 
+    defaultOpenSubMenus?: string[]
 }
 export const MenuContext = createContext<IMenuContext>({index: '0'})
 const Menu: React.FC<MenuProps> = (props)=>{
-    const {defaultIndex, className, mode, onSelect, style,children} = props
+    const {defaultIndex, defaultOpenSubMenus, className, mode, onSelect, style,children} = props
     const [currentActive, setActive] = useState(defaultIndex)
     const classes = classNames('meunWrap',className, {
         'menu-vertical': mode === 'vertical',
@@ -31,21 +33,20 @@ const Menu: React.FC<MenuProps> = (props)=>{
     const passedContext: IMenuContext = {
         index: currentActive ? currentActive : '0',
         onSelect: handleClick,
-        mode
+        mode,
+        defaultOpenSubMenus
     }
     const renderChildrenNode = ()=>{
       return React.Children.map(children, (child, index)=>{
             const childElement = child as React.FunctionComponentElement<MenuItemProps>
-            console.log('children', childElement)
             const {displayName} = childElement.type
-            if(displayName === 'MenuItem'){
+            if(displayName === 'MenuItem' || displayName === 'SubMenu'){
                 return React.cloneElement(childElement, {
                     index: index.toString()
                 })
             }else{
                 console.error('Warning:not has Component MenuItem')
             }
-            // return child
         })
     }
     return (
