@@ -12,8 +12,8 @@ interface ISubMenu {
 let timer: any
 const SubMenu:FC<ISubMenu> = ({index, style, className, disabled, children, title}) =>{
     const context = useContext(MenuContext)
-    const openedSubMenus = context.defaultOpenSubMenus as string[]
-    const isopened = (index && context.mode === 'vertical') ? openedSubMenus.includes(index) : false
+    const openedSubMenus = context.defaultOpenSubMenus as Array<string>
+    const isopened = (index && openedSubMenus && context.mode === 'vertical') ? openedSubMenus.includes(index) : false
     const [menuOpen, setOpen] = useState(isopened)
     const handlenMouse = (e:MouseEvent, toggle: boolean) =>{
        window.clearTimeout(timer)
@@ -59,7 +59,7 @@ const SubMenu:FC<ISubMenu> = ({index, style, className, disabled, children, titl
         className
     })
     return (
-         <li className={classNamed} style={style}  {...hoverEvents}>
+         <li className={classNamed} style={style} data-testid='test-submenu'  {...hoverEvents}>
              <div className='submenu-title' {...clickEvent}>
                  {title}
              </div>
