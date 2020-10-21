@@ -1,0 +1,42 @@
+.tabs{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding-left: 0;
+    border-bottom: 1px solid #F0F0F0;
+   .tabPane{
+       .title{
+           text-align: center;
+           margin: 0 32px -1px 0;
+           padding: 12px 0;
+           box-sizing: border-box;
+           border-bottom: 2px solid transparent;
+           cursor: pointer;
+           &:hover{
+            color: #096dd9;
+           }
+       }
+       .content{
+         position: absolute;
+         left: 0;
+         width: 100%;
+         display: none;
+       }
+       &.is-active{
+           .title{
+               color: #1890FF;
+               border-bottom: 2px solid #1890FF;
+           }
+           .content{
+            display: block;
+           }
+       }
+       &.is-disabled{
+          .title{
+            cursor: not-allowed;
+            color: rgba(0,0,0,.25);
+          }
+       }
+    }
+}

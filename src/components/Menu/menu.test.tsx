@@ -1,8 +1,7 @@
 import React from 'react'
 import {Menu, MenuItem, SubMenu} from './index'
 import {MenuProps} from './Menu'
-import { render, RenderResult, fireEvent, cleanup, wait, waitFor } from '@testing-library/react';
-import { clear } from 'console';
+import { render, RenderResult, fireEvent, cleanup, waitFor } from '@testing-library/react';
 const testProps:MenuProps = {
     defaultIndex: '0',
     onSelect:jest.fn(),

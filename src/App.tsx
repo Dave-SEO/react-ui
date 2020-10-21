@@ -4,6 +4,8 @@ import  {Button} from './components/ButtonDeom'
 import {Alert, AlertType} from './components/Alert'
 import './styles/index.scss';
 import {Menu, MenuItem, SubMenu} from './components/Menu'
+import {Tabs, TabPane} from './components/tabs'
+import { spawn } from 'child_process';
 function App() {
   return (
     <div className="App">
@@ -29,6 +31,12 @@ function App() {
           <Button btnType={ButtonType.Primary} size={ButtonSize.large} disable>submit</Button>
           <Button btnType={ButtonType.Link} href='www.baidu.com' disable>百度一下</Button>
         </p> */}
+        <Tabs defaultIndex='3'>
+          <TabPane label="Tab1">Tab1Content</TabPane>
+          <TabPane label="Tab2" disabled>Tab2Content</TabPane>
+          <TabPane label="Tab3">Tab3Content</TabPane>
+          <TabPane label={<span>Tab4</span>}>Tab4Content</TabPane>
+        </Tabs>
         <a
           className="App-link"
           href="https://reactjs.org"
