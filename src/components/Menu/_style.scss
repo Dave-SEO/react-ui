@@ -30,9 +30,18 @@
         display: flex;
         align-items: center;
       }
+      .icon-down{
+        transition: transform .25s ease-in-out;
+        margin-left: 3px;
+      }
       .arrow-icon {
         transition: transform .25s ease-in-out;
         margin-left: 3px;
+      }
+      &:hover{
+        .icon-down{
+          transform: rotate(180deg);
+        }
       }
       &:hover {
         .arrow-icon {
@@ -44,9 +53,15 @@
       .arrow-icon {
         transform: rotate(0deg) !important;
       }
+      .icon-down{
+        transform: rotate(0deg) !important;
+      }
     }
-    .is-vertical.is-opened {
+    .is-vertical.menu-opened {
       .arrow-icon {
+        transform: rotate(180deg) !important;
+      }
+      .icon-down{
         transform: rotate(180deg) !important;
       }
     }

@@ -1,14 +1,14 @@
 import React, {FC, useState} from 'react'
 import classnames from 'classnames'
 // 枚举 alert的类型
-export enum AlertType {
-    success = 'success',
-    default = 'default',
-    danger = 'danger',
-    warning = 'warning'
-}
+// export enum AlertType {
+//     success = 'success',
+//     default = 'default',
+//     danger = 'danger',
+//     warning = 'warning'
+// }
 // 类型断言
-// export type AlertType = 'success' | 'default' | 'danger' | 'warning'
+export type AlertType = 'success' | 'default' | 'danger' | 'warning'
 
 interface IBaseAlert {
     type: AlertType,

@@ -1,2 +1,3 @@
-import {Alert, AlertType} from './Alert'
-export {Alert, AlertType} 
+import { type } from 'os'
+import {Alert} from './Alert'
+export  {Alert } 
