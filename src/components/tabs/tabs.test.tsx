@@ -1,10 +1,16 @@
-import React, { CSSProperties } from 'react';
-import {render, RenderResult} from '@testing-library/react';
+import React from 'react';
+import {fireEvent, render, RenderResult} from '@testing-library/react';
 import {Tabs, TabPane} from './index'
 import {TabsProps} from './tabs'
 const testProps: TabsProps = {
-    defaultIndex: '2'
+    defaultIndex: '2',
+    onSelect: jest.fn()
 }
+const htmlElement = () => (
+    <span className="span">
+        tab4
+    </span>
+)
 const generateTabs = () => (
     <Tabs {...testProps}>
         <TabPane label='tab1'>
@@ -15,6 +21,9 @@ const generateTabs = () => (
         </TabPane>
         <TabPane label='tab3' disabled>
             tab3content
+        </TabPane>
+        <TabPane label={htmlElement()}>
+            tab4content
         </TabPane>
     </Tabs>
 )
@@ -44,12 +53,16 @@ describe('test Tabs', () => {
         expect(wrap.queryByText('tab2content')).toBeVisible()
     })
     it('test tab disabled', () => {
-
+        expect(wrap.getByText('tab3').parentElement).toHaveClass('is-disabled')
+        fireEvent.click(wrap.getByText('tab3'))
+        expect(testProps.onSelect).not.toHaveBeenCalledWith()
     })
     it('test tab click', () => {
-
+        fireEvent.click(wrap.getByText('tab1'))
+        expect(testProps.onSelect).toHaveBeenCalledWith('1')
     })
     it('test tab label append html', () => {
-        
+        expect(wrap.getByText('tab4')).toHaveClass('span')
+        expect(wrap.getByText('tab4').tagName).toEqual('SPAN')
     })
 })
