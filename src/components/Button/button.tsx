@@ -2,24 +2,27 @@ import React, {ButtonHTMLAttributes, FC, HtmlHTMLAttributes} from 'react'
 import classNames from 'classnames'
 // 定义button的大小、类型
 // 枚举 button 大小
-export enum ButtonSize {
-    large = 'lg',
-    small = 's',
-    middle = 'm'
-}
+// export enum ButtonSize {
+//     large = 'lg',
+//     small = 's',
+//     middle = 'm'
+// }
+export type ButtonSize = 'lg' | 's' | 'm'
 // 枚举 button的类型 如 Primary、Danger,Link
-export enum ButtonType {
-    Primary = 'primary',
-    Danger = 'danger',
-    Link = 'link'
-}
+// export enum ButtonType {
+//     Primary = 'primary',
+//     Danger = 'danger',
+//     Link = 'link'
+// }
+export type ButtonType = 'primary' | 'danger' | 'link'
 // 定义接口来描述 button 组件的类型
-interface IBaseButton {
+export interface IBaseButton {
     disable?: boolean,
     href?: string,
     btnType?: ButtonType,
     size?: ButtonSize,
-    children: React.ReactNode
+    children: React.ReactNode,
+    onClick?: () => void
 }
 type NativeButtonProps = IBaseButton & React.ButtonHTMLAttributes<HTMLElement>
 type NativeAnchorButtonProps = IBaseButton & React.AnchorHTMLAttributes<HTMLElement>
@@ -38,9 +41,9 @@ export const Button:FC<ButttonProps> = (props) =>{
     const classed = classNames('btn',className, {
         [`btn-${btnType}`] : btnType,
         [`btn-${size}`] : size,
-        disable: (ButtonType.Link && href) && disable
+        disable: ('link' && href) && disable
     })
-    if(ButtonType.Link && href){
+    if('link' && href){
         return (
             <a href={href} {...restProps} className={classed}>{children}</a>
         )
@@ -51,8 +54,8 @@ export const Button:FC<ButttonProps> = (props) =>{
     }
 }
 Button.defaultProps = {
-    btnType: ButtonType.Primary,
-    size: ButtonSize.middle,
+    btnType: 'primary',
+    size: 'm',
     disable: false
 }
 export default Button

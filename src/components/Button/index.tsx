@@ -1,2 +1,4 @@
-import {Button, ButtonSize, ButtonType} from './button'
-export {Button, ButtonSize, ButtonType}
+import { type } from 'os'
+import {Button, ButtonSize, ButtonType, IBaseButton} from './button'
+export {Button}
+export type {IBaseButton, ButtonSize, ButtonType}

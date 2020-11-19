@@ -1,5 +1,5 @@
 import React from 'react';
-import  {Button} from './components/ButtonDeom'
+import  {Button} from './components/Button'
 // import {Button, ButtonSize, ButtonType} from './components/button'
 import {Alert} from './components/Alert'
 import './styles/index.scss';
@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          <Button  btnType= 'primary' onClick={() =>{console.log('button')}}  size='lg'>click</Button>
+          <Button  btnType='primary' onClick={() =>{console.log('button')}}  size='lg'>click</Button>
           <br/>
           <Button btnType='link' href="www.baidu.com">百度一下</Button>
         </p>
